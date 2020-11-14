@@ -49,8 +49,15 @@ const vueConfig = {
     }
   },
   chainWebpack(config) {
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = 'slapchat'
+        return args
+      })
     config.externals(externals)
     config.resolve.alias
+      .set("@locales", "@/locales")
       .set("@store", "@/store")
       .set("@views", "@/views")
       .set("@router", "@/router")
@@ -62,10 +69,17 @@ const vueConfig = {
     'cube-ui': {
       postCompile: true,
       theme: true
+    },
+    i18n: {
+      // locale: 'en',
+      // fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: true
     }
   },
   productionSourceMap: false,
   configureWebpack(config) {
+    // htmlwebpack
     if (isProd) {
       // 版本号
       // /?version=${process.env.VUE_APP_VERSION}

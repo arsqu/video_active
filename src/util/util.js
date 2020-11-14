@@ -16,10 +16,11 @@ function decryKey(key) {
 
 // 未登录清空数据
 function clearCache() {
-  localStorage.removeItem("isApply")
-  localStorage.removeItem(encryKey("uname"))
-  localStorage.removeItem(encryKey("uid"))
-  localStorage.removeItem(encryKey("token"))
+  var l = localStorage
+  l.removeItem("isApply")
+  l.removeItem(encryKey("uname"))
+  l.removeItem(encryKey("uid"))
+  l.removeItem(encryKey("token"))
 }
 
 function showToast(txt, type, time) {

@@ -1,12 +1,14 @@
 import $axios from './instance'
-import StatusCode from '@util/statusCode'
+// import StatusCode from '@util/statusCode'
+import i18n from '@locales'
 import util from '@util/util'
 
 // 响应状态码
 function statusCode(code) {
   if (code !== 200 && code) {
     util.hideToast()
-    StatusCode[code] && util.showToast(StatusCode[code], 'error')
+    util.showToast(i18n.t(`statusCode.${code}`), 'error')
+    // StatusCode[code] && util.showToast(StatusCode[code], 'error')
   }
 }
 
